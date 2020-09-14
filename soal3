@@ -3,6 +3,8 @@ create database testdb;
 CREATE TABLE `testdb`.`karyawan` (
   `nomor_induk` VARCHAR(10) NOT NULL,
   `nama` VARCHAR(30) NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
   `alamat` VARCHAR(45) NULL,
   `tanggal_lahir` DATE NULL,
   `tanggal_masuk` VARCHAR(45) NULL,
@@ -67,6 +69,7 @@ on a.nomor_induk=b.nomor_induk
 GROUP BY a.nomor_induk;
 
 
+UPDATE `testdb`.`karyawan` SET `email`='teslogin@chpn.com', `password`='teslogin' WHERE `nomor_induk`='IP06001';
 
 
 

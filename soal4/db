@@ -1,0 +1,10 @@
+create database testdb;
+
+CREATE TABLE `testdb`.`karyawan` (
+  `nomor_induk` VARCHAR(10) NOT NULL,
+  `nama` VARCHAR(30) NULL,
+  `alamat` VARCHAR(45) NULL,
+  `tanggal_lahir` DATE NULL,
+  `tanggal_masuk` VARCHAR(45) NULL,
+  PRIMARY KEY (`nomor_induk`));
+
