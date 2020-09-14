@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Example Template</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
-    <link href="<?php echo $base_url; ?>assets/css/datatables-bootstrap3.css" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assets/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assets/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assets/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assets/css/style.css">
 </head>
 <body>
 
 <div class="container">  
-
+<?php
+echo form_open('pegawai-cuti/cform/cari');
+?>
 <table width="100%" class="table table-striped table-bordered">
  	<thead>
             <tr>
@@ -52,14 +53,15 @@
 		<td>
 		</td>
 		<td>
-			<input type="button" value="Reset"><input type="button" value="Filter">
+			<input type="button" value="Reset"><input type="submit" value="Filter">
 		</td>
 	 </tr>
 	</tr>
 	</tbody>
 </table>
-				<td><input type="button" value="Tambah Data"><input type="button" value="Export Excel"></td>
-<table width="100%" id="example" class="table table-striped table-bordered">
+<?php echo form_close(); ?>
+
+<table width="100%" id="maintable" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Nomor Induk</th>
@@ -67,7 +69,6 @@
                 <th>Tanggal Mulai</th>
                 <th>Durasi</th>
                 <th>Keterangan</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -82,7 +83,6 @@
 				<td><?php echo $cuti_pegawai[$j]->tanggal_mulai ;?></td>
 				<td><?php echo $cuti_pegawai[$j]->lama_cuti ;?></td>
 				<td><?php echo $cuti_pegawai[$j]->keterangan ;?></td>
-				<td><input type="button" value="Edit"><input type="button" value="Delete"></td>
 				</tr>
 			<?php } ?>
            
@@ -91,24 +91,17 @@
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/jszip.min.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/pdfmake.min.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/vfs_fonts.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/app.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/jquery.mark.min.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>assets/js/datatables.mark.js"></script>
 
-<script type="text/javascript">
-    $(document).ready( function() {
-  $('#example').dataTable( {
-    "aoColumns": [
-      null,
-      null,
-      null,
-      null,
-      null,
-{ "sType": "html" }
-
-    ]
-  } );
-} );
-</script>
 </body>
 </html>
