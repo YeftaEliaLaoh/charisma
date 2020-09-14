@@ -19,10 +19,14 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
-		if ($this->session->userdata('nomor_induk')!= "0") {
-			$isi['isi'] = 'tengah';
-			$this->load->view('loginform',$isi);
+	{		
+		if ($this->session->userdata('nomor_induk')!= "0") 
+		{
+			$data['isi'] = 'tengah';
+			$http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
+			$newurl = str_replace("index.php","", $_SERVER['SCRIPT_NAME']);
+			$data['base_url']    = "$http" . $_SERVER['SERVER_NAME'] . $newurl;
+			$this->load->view('template',$data);
 		}
 		else
 			redirect('loginform');

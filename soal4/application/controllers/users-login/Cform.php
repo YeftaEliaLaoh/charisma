@@ -20,14 +20,14 @@ class Cform extends CI_Controller{
 				if ($cek_login[0]['nomor_induk']!= "0") 
 				{
 		
-				$session = array('username'=> $username,
-								'is_logged_in'=> true,
-								'nomor_induk'=> $cek_login[0]['nomor_induk'],
-								'nama'=> $cek_login[0]['nama']
+				$session = array('nomor_induk'=> $cek_login[0]['nomor_induk'],
+						'nama'=> $cek_login[0]['nama'],
+						'is_logged_in'=> true
 							);
 				$this->session->set_userdata($session);
-		
+
 				redirect('welcome');
+
 				}
 				else
 				redirect('loginform/index/f');
