@@ -91,7 +91,8 @@ echo form_open('pegawai-data/cform/cari');
 				<td><?php echo $data_pegawai[$j]->alamat ;?></td>
 				<td><?php echo $data_pegawai[$j]->tanggal_lahir ;?></td>
 				<td><?php echo $data_pegawai[$j]->tanggal_masuk ;?></td>
-				<td><input type="button" value="Edit">
+				<td><input type="button" value="Edit" onclick="javascript: 
+            openCenteredWindow('<?php echo base_url(); ?>index.php/pegawai-data/cform/edit_pegawai/<?php echo $data_pegawai[$j]->nomor_induk; ?>');" >
 				<a href="<?php echo base_url()."index.php/pegawai-data/cform/delete/".$data_pegawai[$j]->nomor_induk; ?>"
  onclick=\"return confirm('Hapus data ini?')\">Delete</a></td>
 				</td>
@@ -121,7 +122,7 @@ echo form_open('pegawai-data/cform/cari');
 function openCenteredWindow(url) {
 
 		var width = 680;
-		var height = 300;
+		var height = 360;
 		var left = parseInt((screen.availWidth/2) - (width/2));
 		var top = parseInt((screen.availHeight/2) - (height/2));
 		var windowFeatures = "width=" + width + ",height=" + height +

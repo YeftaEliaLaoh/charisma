@@ -32,7 +32,7 @@ class Cform extends CI_Controller{
 	$http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
 	$newurl = str_replace("index.php","", $_SERVER['SCRIPT_NAME']);
 	$data['base_url']    = "$http" . $_SERVER['SERVER_NAME'] . $newurl;
-	$this->load->view('pegawai-data/vpopup',$data);
+	$this->load->view('pegawai-data/vaddpopup',$data);
 
   	}
 
@@ -52,7 +52,7 @@ class Cform extends CI_Controller{
 	$http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
 	$newurl = str_replace("index.php","", $_SERVER['SCRIPT_NAME']);
 	$data['base_url']    = "$http" . $_SERVER['SERVER_NAME'] . $newurl;
-	$this->load->view('pegawai-data/vpopup',$data);
+	$this->load->view('pegawai-data/vaddpopup',$data);
 
   	}
 
@@ -95,5 +95,41 @@ class Cform extends CI_Controller{
 	$data['isi']	= 'pegawai-data/vmainform';	
 	$this->load->view('template',$data);
   }
+
+function edit_pegawai(){
+
+	$is_logged_in = $this->session->userdata('is_logged_in');
+		if (!isset($is_logged_in) || $is_logged_in!= true) {
+			redirect('loginform');
+		}
+		
+	$http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
+	$newurl = str_replace("index.php","", $_SERVER['SCRIPT_NAME']);
+	$data['base_url']    = "$http" . $_SERVER['SERVER_NAME'] . $newurl;
+	$this->load->view('pegawai-data/veditpopup',$data);
+
+  	}
+
+function update_pegawai(){
+
+	$is_logged_in = $this->session->userdata('is_logged_in');
+		if (!isset($is_logged_in) || $is_logged_in!= true) {
+			redirect('loginform');
+		}
+
+	$nomor_induk 	= $this->uri->segment(4);
+	$nama 	= $this->input->post('nama', TRUE);  
+	$tanggal_lahir 	= $this->input->post('tanggal_lahir', TRUE);  
+	$tanggal_masuk 	= $this->input->post('tanggal_masuk', TRUE);  
+	$alamat 	= $this->input->post('alamat', TRUE);
+
+	$this->mmaster->update_data_pegawai($nomor_induk,$nama,$tanggal_lahir,$tanggal_masuk,$alamat);
+	$http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '') . '://';
+	$newurl = str_replace("index.php","", $_SERVER['SCRIPT_NAME']);
+	$data['base_url']    = "$http" . $_SERVER['SERVER_NAME'] . $newurl;
+	$this->load->view('pegawai-data/veditpopup',$data);	
+
+  	}
+
 }
 ?>

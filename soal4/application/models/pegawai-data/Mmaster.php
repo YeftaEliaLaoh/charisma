@@ -47,5 +47,17 @@ function insert_data_pegawai($nomor_induk,$nama,$tanggal_lahir,$tanggal_masuk,$a
  	return $query->result(); 
 }
 
+function update_data_pegawai($nomor_induk,$nama,$tanggal_lahir,$tanggal_masuk,$alamat)
+{
+	$data = [
+            'nama' => $nama,
+            'tanggal_lahir' => $tanggal_lahir,
+            'tanggal_masuk' => $tanggal_masuk,
+            'alamat' => $alamat,
+        ];
+        $this->db->where('nomor_induk',$nomor_induk);
+        $this->db->update('karyawan', $data);
+
+}
 }
 ?>
